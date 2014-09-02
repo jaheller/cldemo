@@ -1,15 +1,12 @@
 auto lo
 iface lo inet loopback
-
-auto eth0
-iface eth0 inet dhcp
-
 <% if @int_loopback -%>
-auto lo:1
-iface lo:1 inet static
     address <%= int_loopback %>
     netmask 255.255.255.255
 <% end -%>
+
+auto eth0
+iface eth0 inet dhcp
 
 <% if @int_unnumbered -%>
 # unnumbered interfaces
