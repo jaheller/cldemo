@@ -75,7 +75,11 @@ else
     tmux send-keys "cw-mux-helper overview $WBENCHCLASS" 'C-m'
 fi
 
+# ctrl-b ctrl-p = CumulusLinux!
 tmux bind-key C-p run 'tmux set-buffer CumulusLinux!; tmux paste-buffer'
+
+# ctrl-b ctrl-c = cumulus
+tmux bind-key C-p run 'tmux set-buffer cumulus; tmux paste-buffer'
 
 # set up mouse
 if [[ $mouse == 1 ]]
