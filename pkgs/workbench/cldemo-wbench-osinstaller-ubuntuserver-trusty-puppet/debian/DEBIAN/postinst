@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+cp -f /var/www/ubuntuserver-trusty-ks.cfg /var/www/ubuntuserver-trusty-puppet-ks.cfg
+
+
+# install and enable puppet agent
+cat <<EOF >>/var/www/ubuntuserver-trusty-puppet-ks.cfg
+%post
+
+pushd /tmp
+wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+dpkg -i puppetlabs-release-trusty.deb
+apt-get update
+apt-get install -y puppet
+sed -i /etc/default/puppet -e 's/START=no/START=yes/'
+popd
+
+EOF
+
+
+
+cat <<EOF
+**********************************************************************
+Workbench host OS package: Ubuntu Server 14.04 LTS (Trusty Tahr) w/Puppet
+
+OS install files have been added to /var/lib/tftpboot
+
+You can install Ubuntu 14.04 w/Puppet on a host using:
+
+$ cw-pxehelper -s server1 -o ubuntuserver-trusty-puppet -n
+
+EOF
+
