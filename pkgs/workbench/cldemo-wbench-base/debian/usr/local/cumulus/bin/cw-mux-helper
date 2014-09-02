@@ -33,6 +33,8 @@ then
     echo " 'ctrl-b n' to change window/tab "
     echo " 'ctrl-b o' to change pane inside a window "
     echo " 'ctrl-b d' to detach "
+    echo " 'ctrl-b ctrl-c' to type cumulus"
+    echo " 'ctrl-b ctrl-p' to type CumulusLinux!"
     echo ""
     cat $DIAGRAMSDIR$TOPOLOGY.txt
     while :
