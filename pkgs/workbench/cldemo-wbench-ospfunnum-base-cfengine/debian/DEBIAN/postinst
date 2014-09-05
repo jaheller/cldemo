@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-ln -fs /var/www/CumulusLinux-2.2.0-powerpc.bin /var/www/onie-installer
-ln -fs /var/www/CumulusLinux-2.2.0-powerpc.bin /var/www/onie-installer-powerpc
-ln -fs /var/www/CumulusLinux-2.2.0-amd64.bin /var/www/onie-installer-x86_64
-
 master_promises="/var/cfengine/masterfiles/promises.cf"
 
 if ! grep 'cldemo.bundles' $master_promises > /dev/null; then

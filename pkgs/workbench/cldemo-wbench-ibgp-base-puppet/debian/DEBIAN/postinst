@@ -2,8 +2,4 @@
 
 cp /var/www/topology.dot /etc/puppet/modules/ibgp/files/topology.dot
 
-ln -fs /var/www/CumulusLinux-2.1.0-powerpc.bin /var/www/onie-installer
-ln -fs /var/www/CumulusLinux-2.1.0-powerpc.bin /var/www/onie-installer-powerpc
-ln -fs /var/www/CumulusLinux-2.1.0-amd64.bin /var/www/onie-installer-x86_64
-
 exit 0

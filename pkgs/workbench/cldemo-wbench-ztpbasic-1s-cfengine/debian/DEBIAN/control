@@ -1,9 +1,10 @@
 Package: cldemo-wbench-ztpbasic-1s-cfengine
-Version: 0.2-1
+Version: 0.2-2
 Section: base
 Priority: optional
 Architecture: all
 Depends: cldemo-wbench-base-cfengine
-Maintainer: Matt Willsher <mwillsher@cumulusnetworks.com>
+Maintainer: Leslie Carr <leslie@cumulusnetworks.com>, Nat Morris <nat@cumulusnetworks.com>
 Description: Single switch basic configuration with CFEngine
   Single switch CFEngine install
+  Original Author Matt Willsher <mwillsher@cumulusnetworks.com>
