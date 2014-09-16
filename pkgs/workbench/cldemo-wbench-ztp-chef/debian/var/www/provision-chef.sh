@@ -10,6 +10,9 @@ function error() {
 
 trap error ERR
 
+# force time
+sntp -s wbench.lab.local
+
 # Upgrade and install Chef
 apt-get update -y
 apt-get upgrade -y

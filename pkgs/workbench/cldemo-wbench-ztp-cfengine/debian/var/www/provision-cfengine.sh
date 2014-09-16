@@ -7,6 +7,9 @@ function error() {
 
 trap error ERR
 
+# set time
+sntp -s wbench.lab.local
+
 # Add CFEngine repository
 wget -qO- https://s3.amazonaws.com/cfengine.package-repos/pub/gpg.key | apt-key add -
 echo "deb http://cfengine.com/pub/apt/packages stable main" > /etc/apt/sources.list.d/cfengine-community.list

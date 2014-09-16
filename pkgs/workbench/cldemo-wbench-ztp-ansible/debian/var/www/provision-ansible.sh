@@ -7,6 +7,8 @@ function error() {
 
 trap error ERR
 
+sntp -s wbench.lab.local
+
 URL="http://wbench.lab.local/ansible_authorized_keys"
 
 mkdir -p /root/.ssh
