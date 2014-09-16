@@ -3,5 +3,6 @@ class base::role::switch {
     base::interfaces,
     base::motd,
     base::ntpclient,
-    base::users
+    base::users,
+    base::sysctl
 }
