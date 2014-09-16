@@ -7,6 +7,9 @@ function error() {
 
 trap error ERR
 
+# force ntp sync
+sntp -s wbench.lab.local
+
 # Allow Cumulus testing repo
 sed -i /etc/apt/sources.list -e 's/^#\s*\(deb.*testing.*\)$/\1/g'
 
