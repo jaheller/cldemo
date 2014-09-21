@@ -1,6 +1,7 @@
 node 'spine1.lab.local' {
     $int_enabled = true
     $int_loopback = '10.2.1.3'
+    $int_loopback6 = '2001:db8:2:2000::3'
     $int_unnumbered = [ 'swp49', 'swp50', 'swp51', 'swp52' ]
     $int_bridges = { }
     include ospfunnum::role::switchbase
@@ -9,6 +10,7 @@ node 'spine1.lab.local' {
 node 'spine2.lab.local' {
     $int_enabled = true
     $int_loopback = '10.2.1.4'
+    $int_loopback6 = '2001:db8:2:2000::4'
     $int_unnumbered = [ 'swp49', 'swp50', 'swp51', 'swp52' ]
     $int_bridges = { }
     include ospfunnum::role::switchbase
@@ -17,13 +19,16 @@ node 'spine2.lab.local' {
 node 'leaf1.lab.local' {
     $int_enabled = true
     $int_loopback = '10.2.1.1'
+    $int_loopback6 = '2001:db8:2:2000::1'
     $int_unnumbered = [ 'swp1s0', 'swp1s1', 'swp1s2', 'swp1s3' ]
     $int_bridges = {
         br0 => {  'address' => '10.4.1.1',
                   'netmask' => '255.255.255.128',
+                  'address6' => '2001:db8:2:4001::1/64',
                   'members' => ['swp32s0'] },
         br1 => {  'address' => '10.4.1.129',
                   'netmask' => '255.255.255.128',
+                  'address6' => '2001:db8:2:4002::1/64',
                   'members' => ['swp32s1'] }
     }
     include ospfunnum::role::switchbase
@@ -33,13 +38,16 @@ node 'leaf1.lab.local' {
 node 'leaf2.lab.local' {
     $int_enabled = true
     $int_loopback = '10.2.1.2'
+    $int_loopback6 = '2001:db8:2:2000::2'
     $int_unnumbered = [ 'swp1s0', 'swp1s1', 'swp1s2', 'swp1s3' ]
     $int_bridges = {
         br0 => {  'address' => '10.4.2.1',
                   'netmask' => '255.255.255.128',
+                  'address6' => '2001:db8:2:4003::1/64',
                   'members' => ['swp32s0'] },
         br1 => {  'address' => '10.4.2.129',
                   'netmask' => '255.255.255.128',
+                  'address6' => '2001:db8:2:4004::1/64',
                   'members' => ['swp32s1'] }
     }
     include ospfunnum::role::switchbase
