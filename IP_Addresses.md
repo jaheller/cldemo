@@ -2,29 +2,56 @@
 
 All demos should use these IP assignments, the same as the [Cumulus CL101](https://support.cumulusnetworks.com/hc/en-us/articles/201956333-Cumulus-Linux-101) lab guide.
 
+### IPv4
+
+Various [RFC1918](http://tools.ietf.org/html/rfc1918) allocations:
+
+| Network               | Assignment           |
+|-----------------------|----------------------|
+| Management            | 192.168.0.0/24       |
+| Production / underlay | 10.0.0.0/12          |
+| Overlays              | 172.16.0.0/16        |
+
+### IPv6
+
+Using the [RFC3849](http://tools.ietf.org/html/rfc3849) assigned IPv6 address prefix reserved for documentation: 2001:db8::/32
+
+| Network               | Assignment           |
+|-----------------------|----------------------|
+| Management            | 2001:db8:1::/48      |
+| Production / underlay | 2001:db8:2::/48      |
+| Overlays              | 2001:db8:3::/48      |
+
+
 ## Management network
 
-**Subnet** 192.168.0.0/24
+192.168.0.0/24
 
-**DHCP pool** 192.168.0.100 - 192.168.0.200
+2001:db8:1::/48
 
-| Device  | Interface | IPv4           | Type             |
-|---------|-----------|----------------|------------------|
-| wbench  | eth1      | 192.168.0.1    | Static           |
-| server1 | IPMI      | 192.168.0.3    | Static           |
-| server2 | IPMI      | 192.168.0.4    | Static           |
-| leaf1   | eth1      | 192.168.0.11   | DHCP Reservation |
-| spine1  | eth1      | 192.168.0.12   | DHCP Reservation |
-| leaf2   | eth1      | 192.168.0.13   | DHCP Reservation |
-| spine2  | eth1      | 192.168.0.14   | DHCP Reservation |
-| server1 | eth0      | 192.168.0.201  | DHCP Reservation |
-| server2 | eth0      | 192.168.0.201  | DHCP Reservation |
+DHCP Pool - 192.168.0.100 - 192.168.0.200
 
+| Device  | Interface | IPv4           | IPv6             | Type             |
+|---------|-----------|----------------|------------------|------------------|
+| wbench  | eth1      | 192.168.0.1    |                  | Static           |
+| server1 | IPMI      | 192.168.0.3    |                  | Static           |
+| server2 | IPMI      | 192.168.0.4    |                  | Static           |
+| leaf1   | eth1      | 192.168.0.11   |                  | DHCP Reservation |
+| spine1  | eth1      | 192.168.0.12   |                  | DHCP Reservation |
+| leaf2   | eth1      | 192.168.0.13   |                  | DHCP Reservation |
+| spine2  | eth1      | 192.168.0.14   |                  | DHCP Reservation |
+| server1 | eth0      | 192.168.0.201  |                  | DHCP Reservation |
+| server2 | eth0      | 192.168.0.201  |                  | DHCP Reservation |
 
+## Production / underlay
 
-## Loopbacks
+10.0.0.0/12
 
-All /32's or /128's
+2001:db8:2::/48
+
+### Loopbacks
+
+10.2.1.0/16, all /32's
 
 | Device  | Interface | IPv4           | IPv6             |
 |---------|-----------|----------------|------------------|
@@ -33,7 +60,9 @@ All /32's or /128's
 | spine1  | lo        | 10.2.1.3       |                  |
 | spine2  | lo        | 10.2.1.4       |                  |
 
-## Client bridges / VLANs
+### Client bridges / VLANs
+
+10.4.0.0/16, normally /25's
 
 | Device  | Interface | IPv4           | IPv6             |
 |---------|-----------|----------------|------------------|
@@ -42,7 +71,9 @@ All /32's or /128's
 | leaf1   | br0       | 10.4.2.0/25    |                  |
 | leaf2   | br1       | 10.4.2.128/25  |                  |
 
-## Point to points / linknets
+### Point to points / linknets
+
+10.1.1.0/16, /30's
 
 | Topology | IPv4 subnet  | IPv6 subnet | Device A | Device B | Interface A | Interface B | IPv4 A    | IPv4 B    | IPv6 A | IPv6 B |
 |----------|--------------|-------------|----------|----------|-------------|-------------|-----------|-----------|--------|--------|
@@ -68,6 +99,10 @@ All /32's or /128's
 | 2s2l     | 10.1.1.60/30 |             | leaf2    | spine1   | swp20       | swp20       | 10.1.1.61 | 10.1.1.62 |        |        |
 
 ## Overlays
+
+172.16.0.0/16
+
+2001:db8:3::/48
 
 | Topology | IPv4 subnet  | IPv6 subnet | Device A | Device B | Interface A | Interface B | IPv4 A    | IPv4 B    | IPv6 A | IPv6 B |
 |----------|--------------|-------------|----------|----------|-------------|-------------|-----------|-----------|--------|--------|
