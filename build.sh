@@ -122,6 +122,14 @@ fi
 # copy static content
 cp -R repo-static/* repo-build/
 
+# warn if working in branch
+BRANCH=`git rev-parse --abbrev-ref HEAD`
+if [ "$BRANCH" != "master" ]; then
+    echo ""
+    echo "WARNING: You are working in non-master branch '$BRANCH'"
+fi
+
+
 echo ""
 echo "Done"
 echo ""
