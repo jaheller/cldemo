@@ -2,25 +2,18 @@
 
 All demos should use these IP assignments, the same as the [Cumulus CL101](https://support.cumulusnetworks.com/hc/en-us/articles/201956333-Cumulus-Linux-101) lab guide.
 
-### IPv4
+### Assignments
 
-Various [RFC1918](http://tools.ietf.org/html/rfc1918) allocations:
+Various [RFC1918](http://tools.ietf.org/html/rfc1918) allocations.
 
-| Network               | Assignment           |
-|-----------------------|----------------------|
-| Management            | 192.168.0.0/24       |
-| Production / underlay | 10.0.0.0/12          |
-| Overlays              | 172.16.0.0/16        |
+IPv6 using the [RFC3849](http://tools.ietf.org/html/rfc3849) assigned IPv6 address prefix reserved for documentation: 2001:db8::/32
 
-### IPv6
 
-Using the [RFC3849](http://tools.ietf.org/html/rfc3849) assigned IPv6 address prefix reserved for documentation: 2001:db8::/32
-
-| Network               | Assignment           |
-|-----------------------|----------------------|
-| Management            | 2001:db8:1::/48      |
-| Production / underlay | 2001:db8:2::/48      |
-| Overlays              | 2001:db8:3::/48      |
+| Network               | IPv4                 | IPv6                 |
+|-----------------------|----------------------|----------------------|
+| Management            | 192.168.0.0/24       | 2001:db8:1::/48      |
+| Production / underlay | 10.0.0.0/12          | 2001:db8:2::/48      |
+| Overlays              | 172.16.0.0/16        | 2001:db8:3::/48      |
 
 
 ## Management network
@@ -49,31 +42,56 @@ DHCP Pool - 192.168.0.100 - 192.168.0.200
 
 2001:db8:2::/48
 
+| Network                   | IPv4        | IPv6                 |
+|---------------------------|-------------|----------------------|
+| Loopbacks                 | 10.2.0.0/16 | 2001:db8:2:2000::/52 |
+| Host facing bridges/VLANs | 10.4.0.0/16 | 2001:db8:2:4000::/52 |
+| Points to points          | 10.1.0.0/16 | 2001:db8:2:1000::/52 |
+
+
 ### Loopbacks
 
 10.2.1.0/16, all /32's
 
-| Device  | Interface | IPv4           | IPv6             |
-|---------|-----------|----------------|------------------|
-| leaf1   | lo        | 10.2.1.1       |                  |
-| leaf2   | lo        | 10.2.1.2       |                  |
-| spine1  | lo        | 10.2.1.3       |                  |
-| spine2  | lo        | 10.2.1.4       |                  |
+2001:db8:2:2000::/52, all /128s
 
-### Client bridges / VLANs
+```2001:0db8:0002:2000:0000:0000:0000:0000```
 
-10.4.0.0/16, normally /25's
+```2001:0db8:0002:2fff:ffff:ffff:ffff:ffff```
 
-| Device  | Interface | IPv4           | IPv6             |
-|---------|-----------|----------------|------------------|
-| leaf1   | br0       | 10.4.1.0/25    |                  |
-| leaf2   | br1       | 10.4.1.128/25  |                  |
-| leaf1   | br0       | 10.4.2.0/25    |                  |
-| leaf2   | br1       | 10.4.2.128/25  |                  |
+| Device  | Interface | IPv4           | IPv6                   |
+|---------|-----------|----------------|------------------------|
+| leaf1   | lo        | 10.2.1.1/32    | 2001:db8:2:2000::1/128 |
+| leaf2   | lo        | 10.2.1.2/32    | 2001:db8:2:2000::2/128 |
+| spine1  | lo        | 10.2.1.3/32    | 2001:db8:2:2000::3/128 |
+| spine2  | lo        | 10.2.1.4/32    | 2001:db8:2:2000::4/128 |
 
-### Point to points / linknets
+### Host facing bridges/VLANs
+
+10.4.0.0/16, normally /25s
+
+2001:db8:2:4000::/52, all /64s
+
+```2001:0db8:0002:4000:0000:0000:0000:0000```
+
+```2001:0db8:0002:4fff:ffff:ffff:ffff:ffff```
+
+| Device  | Interface | IPv4           | IPv6                  |
+|---------|-----------|----------------|-----------------------|
+| leaf1   | br0       | 10.4.1.0/25    | 2001:db8:2:4001::1/64 |
+| leaf2   | br1       | 10.4.1.128/25  | 2001:db8:2:4002::1/64 |
+| leaf1   | br0       | 10.4.2.0/25    | 2001:db8:2:4003::1/64 |
+| leaf2   | br1       | 10.4.2.128/25  | 2001:db8:2:4004::1/64 |
+
+### Point to points
 
 10.1.1.0/16, /30's
+
+2001:db8:2:1000::/52, all /112s
+
+```2001:0db8:0002:1000:0000:0000:0000:0000```
+
+```2001:0db8:0002:1fff:ffff:ffff:ffff:ffff```
 
 | Topology | IPv4 subnet  | IPv6 subnet | Device A | Device B | Interface A | Interface B | IPv4 A    | IPv4 B    | IPv6 A | IPv6 B |
 |----------|--------------|-------------|----------|----------|-------------|-------------|-----------|-----------|--------|--------|
