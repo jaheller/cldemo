@@ -1,8 +1,7 @@
 auto lo
 iface lo inet loopback
 <% if @int_loopback -%>
-    address <%= int_loopback %>
-    netmask 255.255.255.255
+    address <%= int_loopback %>/32
 <% end -%>
 
 auto eth0

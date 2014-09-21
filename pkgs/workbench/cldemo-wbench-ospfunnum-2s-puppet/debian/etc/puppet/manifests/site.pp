@@ -1,6 +1,7 @@
 node 'leaf1.lab.local' {
     $int_enabled = true
     $int_loopback = '10.2.1.1'
+    $int_loopback6 = '2001:db8:2:2000::1'
     $int_unnumbered = [ 'swp1', 'swp2', 'swp3', 'swp4' ]
     $int_bridges = {
         br0 => { 'address' => '10.4.1.1', 'netmask' => '255.255.255.128', 'members' => ['swp30','swp31','swp32','swp33'] },
@@ -12,6 +13,7 @@ node 'leaf1.lab.local' {
 node 'leaf2.lab.local' {
     $int_enabled = true
     $int_loopback = '10.2.1.2'
+    $int_loopback6 = '2001:db8:2:2000::2'
     $int_unnumbered = [ 'swp1', 'swp2', 'swp3', 'swp4' ]
     $int_bridges = {
         br0 => { 'address' => '10.4.2.1', 'netmask' => '255.255.255.128', 'members' => ['swp30','swp31','swp32','swp33'] },

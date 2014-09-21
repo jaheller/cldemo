@@ -15,18 +15,32 @@ interface eth0
 !
 interface lo
  link-detect
+<% if @int_loopback6 -%>
+ ipv6 address <%= int_loopback6 %>/128
+<% end -%>
 !
 <% @int_unnumbered.each do |val| -%>
 interface <%= val %>
  ip ospf network point-to-point
- ipv6 nd suppress-ra
+ ipv6 ospf network point-to-point
  link-detect
 !
 <% end -%>
 router ospf
  ospf router-id <%= int_loopback %>
+ log-adjacency-changes
  redistribute connected
  network <%= int_loopback %>/32 area 0.0.0.0
+!
+<% if @int_loopback6 -%>
+router ospf6
+ router-id <%= int_loopback %>
+ log-adjacency-changes
+ interface lo area 0.0.0.0
+ <% @int_unnumbered.each do |val| -%>
+ interface <%= val %> area 0.0.0.0
+ <% end -%>
+<% end -%>
 !
 ip forwarding
 ipv6 forwarding
