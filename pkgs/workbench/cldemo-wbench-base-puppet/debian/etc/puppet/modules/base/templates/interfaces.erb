@@ -40,6 +40,9 @@ auto <%= key %>
 iface <%= key %> inet static
     address <%= value_hash['address'] %>
     netmask <%= value_hash['netmask'] %>
+<% if value_hash['address6'] -%>
+    address <%= value_hash['address6'] %>
+<% end -%>
     bridge_ports <% value_hash['members'].each do |val| -%><%= val%> <% end -%>
 
 <% end %>
