@@ -22,7 +22,7 @@ interface lo
 <% @int_unnumbered.each do |val| -%>
 interface <%= val %>
  ip ospf network point-to-point
- ipv6 ospf network point-to-point
+ ipv6 ospf6 network point-to-point
  link-detect
 !
 <% end -%>
