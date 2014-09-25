@@ -3,6 +3,9 @@ iface lo inet loopback
 <% if @int_loopback -%>
     address <%= int_loopback %>/32
 <% end -%>
+<% if @int_loopback6 -%>
+   address <%= int_loopback6 %>/128
+<% end -%>
 
 auto eth0
 iface eth0 inet dhcp
