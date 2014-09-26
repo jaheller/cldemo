@@ -6,9 +6,6 @@
 #
 #--------------------------------------------------------------------------
 
-# available repos
-repos=( stable testing )
-
 # check params
 while getopts "r:" opt; do
     case "$opt" in
@@ -21,29 +18,40 @@ shift $(( OPTIND - 1))
 if [[ -z "$repo" ]]; then
     echo "ERROR: Repo not specified"
     exit 1
-else
-    # check repo is in list
-    REPOOK=0
-    for i in "${repos[@]}"
-    do
-        if [ "$i" == "$repo" ] ; then
-            REPOOK=1
-        fi
-    done
-    if [ $REPOOK -eq 0 ]; then
-        echo "ERROR: Repo '$repo' not known"
-        exit 1
-    fi
 fi
 
 # current branch
 BRANCH=`git rev-parse --abbrev-ref HEAD`
-if [ "$repo" == "stable" ] && [ "$BRANCH" != "master" ]; then
-    echo "ERROR: Trying to publish non-master branch '$BRANCH' to stable"
+BRANCHREPO="br_$BRANCH"
+DESTOK=0
+DESTERR=""
+
+echo ""
+echo "Publish from branch '$BRANCH' to repo '$repo'"
+
+if [ "$BRANCH" == "master" ] && [ "$repo" == "stable" ]; then
+    DESTOK=1
+fi
+if [ "$BRANCH" == "master" ] && [ "$repo" == "testing" ]; then
+    DESTOK=1
+fi
+
+if [ "$repo" == "$BRANCHREPO" ]; then
+    DESTOK=1
+fi
+
+if [ $DESTOK == 1 ]; then
+    echo "OK"
+else
+    echo "Should not publish from branch $BRANCH to REPO $repo, should go to $BRANCHREPO"
     exit 1
 fi
 
+echo ""
+
 # upload
+ssh repo-publish "mkdir -p /opt/cldemo/$repo/dists/cldemo"
+ssh repo-publish "sudo chown -R cldemo.cldemo /opt/cldemo/br_ipv6ospf"
 scp -r repo-build/* cldemo@repo-publish:/opt/cldemo/$repo/dists/cldemo
 
 exit 0
