@@ -1,3 +1,11 @@
+node 'wbench.lab.local' {
+
+    class { '::puppetdb': listen_address => '0.0.0.0', ssl_listen_address => '0.0.0.0' }
+    class { 'puppetdb::master::config': puppetdb_server => 'puppet'}
+
+}
+
+
 node openstack_host {
 
     # server NICs

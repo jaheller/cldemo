@@ -12,8 +12,15 @@ puppet agent -t
 
 # install the PuppetDB module
 puppet module install puppetlabs/puppetdb
-puppet apply --modulepath /etc/puppet/modules -e "class { '::puppetdb': listen_address => '0.0.0.0', ssl_listen_address => '0.0.0.0' } class { 'puppetdb::master::config': puppetdb_server => 'puppet'}"
 
 puppet module install puppetlabs-openstack
+
+
+# icehouse fixes
+# https://www.grid5000.fr/mediawiki/index.php/OpenStack_Icehouse
+
+# see "Duplicate declaration in Glance (image_cache_dir)"
+sed -e '/Debian/{N;N;d}' -i /etc/puppet/modules/openstack/manifests/profile/glance/api.pp
+
 
 exit 0
