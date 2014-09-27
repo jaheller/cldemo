@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# kick off Ubuntu install on server1 + 2
+cw-pxehelper -o ubuntuserver-trusty-puppet -s server1 -n
+cw-pxehelper -o ubuntuserver-trusty-puppet -s server2 -n
+
+
 # instructions taken from https://github.com/puppetlabs/puppetlabs-openstack
 
 # connect the puppet master to itself for a first run
@@ -9,8 +14,6 @@ puppet agent -t
 puppet module install puppetlabs/puppetdb
 puppet apply --modulepath /etc/puppet/modules -e "class { '::puppetdb': listen_address => '0.0.0.0', ssl_listen_address => '0.0.0.0' } class { 'puppetdb::master::config': puppetdb_server => 'puppet'}"
 
-# kick off Ubuntu install on server1 + 2
-cw-pxehelper -o ubuntuserver-trusty-puppet -s server1 -n
-cw-pxehelper -o ubuntuserver-trusty-puppet -s server2 -n
+puppet module install puppetlabs-openstack
 
 exit 0
