@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# kick off Ubuntu install on server1 + 2
+cw-pxehelper -o ubuntuserver-trusty-puppet -s server1 -n
+cw-pxehelper -o ubuntuserver-trusty-puppet -s server2 -n
+
+
+# instructions taken from https://github.com/puppetlabs/puppetlabs-openstack
+
+# connect the puppet master to itself for a first run
+puppet agent -t
+
+# install the PuppetDB module
+puppet module install puppetlabs/puppetdb --version 4.0.0
+
+puppet module install puppetlabs-openstack --version 4.0.0
+
+
+# icehouse fixes
+# https://www.grid5000.fr/mediawiki/index.php/OpenStack_Icehouse
+
+# see "Duplicate declaration in Glance (image_cache_dir)"
+sed -e '/Debian/{N;N;d}' -i /etc/puppet/modules/openstack/manifests/profile/glance/api.pp
+
+
+exit 0

@@ -14,7 +14,9 @@ if [ ! -d /etc/puppet/files ]; then
 fi
 
 # allow fileserver access
-sed -i /etc/puppet/fileserver.conf -e 's/#  allow 192.168.0.0\/24/allow 192.168.0.0\/24/'
+sed -i /etc/puppet/fileserver.conf -e 's/# \[extra_files\]/\[files\]/'
+sed -i /etc/puppet/fileserver.conf -e 's/#   path \/etc\/puppet\/files/path \/etc\/puppet\/files/'
+sed -i /etc/puppet/fileserver.conf -e 's/#   allow \*/allow \*/'
 
 # insert modulepath
 sed -i '7i\modulepath=/etc/puppet/modules' /etc/puppet/puppet.conf
