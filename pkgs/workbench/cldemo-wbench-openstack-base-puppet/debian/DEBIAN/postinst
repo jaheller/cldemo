@@ -11,9 +11,9 @@ cw-pxehelper -o ubuntuserver-trusty-puppet -s server2 -n
 puppet agent -t
 
 # install the PuppetDB module
-puppet module install puppetlabs/puppetdb
+puppet module install puppetlabs/puppetdb --version 4.0.0
 
-puppet module install puppetlabs-openstack
+puppet module install puppetlabs-openstack --version 4.0.0
 
 
 # icehouse fixes
