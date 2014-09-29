@@ -29,4 +29,9 @@ cd /var/www/librenms
 /usr/bin/php /var/www/librenms/build-base.php
 /usr/bin/php /var/www/librenms/adduser.php rocket turtle 10
 service apache2 restart
+
+#adding new hosts to librenms
+/usr/bin/php /var/www/librenms/addhost.php leaf1.lab.local public v2c
+/usr/bin/php /var/www/librenms/discovery.php -h all
+/usr/bin/php /var/www/librenms/poller.php -h all
 exit 0

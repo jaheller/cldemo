@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e
 
-printf "********\nPlease run librenms.sh as root\n********\n"
+printf "********\nPlease run librenms-setup.sh as root\n********\n"
 exit 0
