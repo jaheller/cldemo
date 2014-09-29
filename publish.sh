@@ -50,8 +50,14 @@ fi
 echo ""
 
 # upload
-ssh repo-publish "mkdir -p /opt/cldemo/$repo/dists/cldemo"
+ssh cldemo@repo-publish "mkdir -p /opt/cldemo/$repo/dists/cldemo"
 ssh repo-publish "sudo chown -R cldemo.cldemo /opt/cldemo/br_ipv6ospf"
 scp -r repo-build/* cldemo@repo-publish:/opt/cldemo/$repo/dists/cldemo
+
+echo ""
+echo "Published packages!"
+echo ""
+echo "deb http://cldemo.cumulusnetworks.com/$repo cldemo workbench"
+echo ""
 
 exit 0
