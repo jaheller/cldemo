@@ -1,0 +1,15 @@
+auto lo
+iface lo inet loopback
+
+# management NIC
+auto eth0
+iface eth0 inet static
+    address 192.168.0.202
+    netmask 255.255.255.0
+    gateway 192.168.0.1
+
+# facing leaf1 swp32s0
+auto eth3
+iface eth3 inet static
+    address 172.16.0.2
+    netmask 255.255.255.0

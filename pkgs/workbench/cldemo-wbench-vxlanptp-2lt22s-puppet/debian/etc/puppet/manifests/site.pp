@@ -1,3 +1,22 @@
+node server_host {
+
+    # server NICs
+    file { "/etc/network/interfaces":
+        source => "puppet:///files/interfaces_$hostname",
+        mode => 644
+    }
+    exec { "/sbin/ifdown --exclude=lo -a && /sbin/ifup --exclude=lo -a":
+        subscribe => File["/etc/network/interfaces"],
+        refreshonly => true
+    }
+}
+
+node "server1.lab.local" inherits server_host {
+}
+
+node "server2.lab.local" inherits server_host {
+}
+
 node 'spine1.lab.local' {
     $int_enabled = true
     $int_loopback = '10.2.1.3'
