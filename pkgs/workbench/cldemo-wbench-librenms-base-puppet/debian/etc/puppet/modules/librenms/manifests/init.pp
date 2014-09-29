@@ -60,6 +60,10 @@ class librenms(
       require => Group['librenms'],
     }
 
+    file { '/etc/cron.d/librenms':
+      ensure => link,
+      target => "${install_dir}/librenms.cron",
+    }
     file { '/etc/apache2/sites-available/librenms.conf':
         ensure  => present,
         owner   => 'www-data',
@@ -124,29 +128,7 @@ class librenms(
     hasrestart => true,
     require    => Package['apache2'],
   }
-#     cron { 'librenms-discovery-all':
-#         ensure  => present,
-#         user    => 'librenms',
-#         command => "${install_dir}/discovery.php -h all >/dev/null 2>&1",
-#         hour    => '*/6',
-#         minute  => '33',
-#         require => User['librenms'],
-#     }
-#     cron { 'librenms-discovery-new':
-#         ensure  => present,
-#         user    => 'librenms',
-#         command => "${install_dir}/discovery.php -h new >/dev/null 2>&1",
-#         minute  => '*/5',
-#         require => User['librenms'],
-#     }
-#     cron { 'librenms-poller-all':
-#         ensure  => present,
-#         user    => 'librenms',
-#         command => "python ${install_dir}/poller-wrapper.py 16 >/dev/null 2>&1",
-#         minute  => '*/5',
-#         require => User['librenms'],
-#     }
-#
+
     # syslog script, in an install_dir-agnostic location
     # used by librenms::syslog or a custom alternative placed manually.
     file { '/usr/local/sbin/librenms-syslog':
