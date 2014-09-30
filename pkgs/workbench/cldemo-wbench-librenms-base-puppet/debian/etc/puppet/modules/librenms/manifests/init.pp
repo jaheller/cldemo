@@ -60,11 +60,10 @@ class librenms(
       require => Group['librenms'],
     }
 
-    file { "${install_dir}/librenms.cron"
+    file { "${install_dir}/librenms.cron":
       ensure  => present,
       owner   => 'root',
       group   => 'root',
-      mode    => 'root',
       content => template('librenms/librenms.cron.erb'),
     }
       
