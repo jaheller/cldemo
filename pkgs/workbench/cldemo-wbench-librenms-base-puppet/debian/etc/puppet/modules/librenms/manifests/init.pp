@@ -60,10 +60,20 @@ class librenms(
       require => Group['librenms'],
     }
 
-    file { '/etc/cron.d/librenms':
-      ensure => link,
-      target => "${install_dir}/librenms.cron",
+    file { "${install_dir}/librenms.cron"
+      ensure  => present,
+      owner   => 'root',
+      group   => 'root',
+      mode    => 'root',
+      content => template('librenms/librenms.cron.erb'),
     }
+      
+    file { '/etc/cron.d/librenms':
+      ensure  => link,
+      target  => "${install_dir}/librenms.cron",
+      require => File["${install_dir}/librenms.cron"],
+    }
+
     file { '/etc/apache2/sites-available/librenms.conf':
         ensure  => present,
         owner   => 'www-data',
