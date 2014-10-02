@@ -33,3 +33,7 @@
 
 - name: install openssl pkg
   apt: name=openssl update_cache=yes
+
+- name: configure server /etc/network/interfaces
+  template: src=../templates/server-interfaces.j2 dest=/etc/network/interfaces
+  notify: restart server networking

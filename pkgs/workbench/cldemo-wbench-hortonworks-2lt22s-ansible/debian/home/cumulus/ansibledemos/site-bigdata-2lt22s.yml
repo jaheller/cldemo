@@ -24,3 +24,5 @@
   user: root
   roles:
     - bigdata
+  vars_files:
+   - roles/bigdata/vars/main-2lt22s.yml

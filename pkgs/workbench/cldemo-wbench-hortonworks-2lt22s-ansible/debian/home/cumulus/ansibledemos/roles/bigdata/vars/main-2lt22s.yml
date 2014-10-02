@@ -1,0 +1,20 @@
+server_interfaces:
+  server1:
+    eth0:
+      address: 192.168.0.201
+      netmask: 255.255.255.0
+      gateway: 192.168.0.1
+    eth3:
+      address: 10.4.1.2
+      netmask: 255.255.255.192
+      up: ip route add 10.4.0.0/16 via 10.4.1.1 dev eth3
+
+  server2:
+    eth0:
+      address: 192.168.0.202
+      netmask: 255.255.255.0
+      gateway: 192.168.0.1
+    eth3:
+      address: 10.4.2.2
+      netmask: 255.255.255.192
+      up: ip route add 10.4.0.0/16 via 10.4.2.1 dev eth3
