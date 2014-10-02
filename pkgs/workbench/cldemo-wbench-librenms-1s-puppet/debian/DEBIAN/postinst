@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
 
-printf "********\nPlease run librenms-setup.sh as root\n********\n"
+printf "********\nReload the switches using cw-swpower -a -o reset and wait about 5 minutes\n********\n"
+printf "********\nThen please run librenms-setup.sh as root\n********\n"
 exit 0
