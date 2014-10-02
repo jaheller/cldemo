@@ -1,0 +1,35 @@
+- name: install python-pycurl
+  apt: pkg=python-pycurl state=latest
+
+- name: add hortonworks key
+  apt_key: url=http://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0xB9733A7A07513CAD state=present
+
+- name: add hortonworks repo
+  apt_repository: repo='deb http://public-repo-1.hortonworks.com/HDP/ubuntu12/2.1.5.0 HDP main' state=present
+
+- name: add hortonworks utils repo
+  apt_repository: repo='deb http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.19/repos/ubuntu12 HDP-UTILS main' state=present
+
+- name: install hadoop pkg
+  apt: name=hadoop update_cache=yes
+
+- name: install hadoop-hfs pkg
+  apt: name=hadoop-hdfs update_cache=yes
+
+- name: install libhdfs0 pkg
+  apt: name=libhdfs0 update_cache=yes
+
+- name: install libhdfs0-dev pkg
+  apt: name=libhdfs0-dev update_cache=yes
+
+- name: install hadoop-yarn pkg
+  apt: name=hadoop-yarn update_cache=yes
+
+- name: install hadoop-mapreduce pkg
+  apt: name=hadoop-mapreduce update_cache=yes
+
+- name: install hadoop-client pkg
+  apt: name=hadoop-client update_cache=yes
+
+- name: install openssl pkg
+  apt: name=openssl update_cache=yes

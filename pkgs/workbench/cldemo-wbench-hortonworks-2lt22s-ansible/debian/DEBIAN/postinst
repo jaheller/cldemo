@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cw-pxehelper -o ubuntuserver-trusty-ansible -s server1 -n
+cw-pxehelper -o ubuntuserver-trusty-ansible -s server2 -n
+
+exit 0
