@@ -2,8 +2,6 @@
 
 chef-server-ctl reconfigure
 
-curl -L https://www.getchef.com/chef/install.sh | sudo bash
-
 pushd /usr/local/share/chef
 	knife node from file nodes/leaf1.json
 	knife node from file nodes/leaf2.json
