@@ -16,7 +16,7 @@ class base::interfaces {
               ensure     => running,
               subscribe  => File['/etc/network/interfaces'],
               hasrestart => true,
-              restart    => '/sbin/ifreload -a'
+              restart    => '/sbin/ifreload -a',
               enable     => true,
               hasstatus  => false,
               require    => File['/etc/cumulus/license.txt']
