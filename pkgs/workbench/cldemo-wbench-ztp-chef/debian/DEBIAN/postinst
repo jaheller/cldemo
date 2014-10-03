@@ -20,4 +20,8 @@ else
   echo "Couldn't find /etc/chef/chef-validator.pem" >&2
 fi
 
+if [[ ! -f /etc/chef/validator.pem ]]; then
+  cp /etc/chef-server/chef-validator.pem /etc/chef/validation.pem
+fi
+
 exit 0
