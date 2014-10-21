@@ -7,6 +7,8 @@ ISOMNT=/mnt/esxicd
 PXEDIR=/var/lib/tftpboot/pxe
 ESXDIR=esxi55
 BOOTCFG=$PXEDIR/$ESXDIR/boot.cfg
+OVFTOOLURL=http://mirror.cwb.cumulusnetworks.com/vmware/VMware-ovftool-3.5.0-1274719-lin.x86_64.bundle
+OVFTOOLTMP=/tmp/ovftool.bundle
 
 # download esxi iso
 if [ -f $ISOTMP ]; then
@@ -47,6 +49,10 @@ echo "prefix=$ESXDIR/" >> $BOOTCFG
 
 # change title
 sed -i $BOOTCFG -e "s#Loading ESXi installer#Loading Cumulus CW ESXi installer#g"
+
+# install ovftool
+wget $OVFTOOLURL -O $OVFTOOLTMP
+sudo sh -c 'TERM=dumb VMWARE_EULAS_AGREED=yes sh /tmp/ovftool.bundle --console --required'
 
 echo *****************************************************
 echo Workbench host OS package: VMWare ESXi 5.5
