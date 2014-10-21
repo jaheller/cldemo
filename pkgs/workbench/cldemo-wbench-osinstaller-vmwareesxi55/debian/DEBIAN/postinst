@@ -52,7 +52,7 @@ sed -i $BOOTCFG -e "s#Loading ESXi installer#Loading Cumulus CW ESXi installer#g
 
 # install ovftool
 wget $OVFTOOLURL -O $OVFTOOLTMP
-sh -c 'TERM=dumb VMWARE_EULAS_AGREED=yes sh $OVFTOOLTMP --console --required'
+sudo sh -c 'TERM=dumb VMWARE_EULAS_AGREED=yes sh /tmp/ovftool.bundle --console --required'
 
 echo *****************************************************
 echo Workbench host OS package: VMWare ESXi 5.5
