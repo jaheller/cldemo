@@ -18,7 +18,7 @@ function udeventries  {
         let "INTIDX=INTNUM-1"
         INTPORT=`jq -r ".[] | .workbench.servers.$SERVERNAME.interfaces[$INTIDX].port" $JSONPATH`
         INTMAC=`jq -r ".[] | .workbench.servers.$SERVERNAME.interfaces[$INTIDX].mac" $JSONPATH`
-        echo ATTR{address}==\"$INTMAC\", NAME=\"$INTPORT\"
+        echo ATTR{address}==\"$INTMAC\", NAME=\"$INTPORT\", DRIVERS==\"\?\*\"
         let "INTNUM+=1"
     done
 }
