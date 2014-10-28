@@ -118,9 +118,9 @@ then
     do
         if [ "$MUXTYPE" == "ssh" ]
         then
-            tmux new-window -t $SNAME -n Switches-SSH
+            tmux new-window -t $SNAME -n SwSSH
         else
-            tmux new-window -t $SNAME -n Switches-CONSOLE
+            tmux new-window -t $SNAME -n SwConsole
         fi
         if [ "$NUMSWITCHES" -eq "1" ]
         then
