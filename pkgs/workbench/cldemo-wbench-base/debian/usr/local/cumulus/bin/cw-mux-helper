@@ -51,6 +51,23 @@ then
     echo ""
 fi
 
+if [ "$MUXTYPE" == "ssh" ]
+then
+    DEVID=$2
+    while :
+    do
+        clear
+        echo ""
+        echo "Waiting for $DEVID to be accessible via ssh."
+        echo ""
+        while ! nc -w1 -z $DEVID 22 &>/dev/null
+        do
+            sleep 1
+        done
+        ssh -i /home/cumulus/.ssh/id_rsa -oStrictHostKeyChecking=no cumulus@$DEVID
+    done
+fi
+
 if [ "$MUXTYPE" == "switch" -o "$MUXTYPE" == "server" ]
 then
     if [ "$MUXTYPE" == "switch" ]
