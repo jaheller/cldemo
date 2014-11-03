@@ -56,8 +56,7 @@ fi
 # make sure topology diagram exists
 if [ ! -f "$DIAGRAMSDIR$WBENCHCLASS.txt" ]
 then
-    echo "ERROR: topology '$WBENCHCLASS' not defined"
-    exit 1
+    echo "WARNING: topology '$WBENCHCLASS' not defined"
 fi
 
 # server might not be running already

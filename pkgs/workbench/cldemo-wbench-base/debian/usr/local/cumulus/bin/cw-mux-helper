@@ -36,7 +36,13 @@ then
     echo " 'ctrl-b ctrl-c' to type cumulus"
     echo " 'ctrl-b ctrl-p' to type CumulusLinux!"
     echo ""
-    cat $DIAGRAMSDIR$TOPOLOGY.txt
+    if [ -r $DIAGRAMSDIR$TOPOLOGY.txt ]
+    then
+        cat $DIAGRAMSDIR$TOPOLOGY.txt
+    else
+        echo "Diagram not available for topology \"$TOPOLOGY\"."
+        echo ""
+    fi
     while :
     do
         read -n1 -r -p " " key
