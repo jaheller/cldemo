@@ -16,9 +16,6 @@ class base::users {
     password => '$1$mKzk5zJc$rjQIr24v.ZF27J7TAaZxQ.',
   }
 
-  account { 'cumulus':
-    ensure => present,
-  }
   base::sudo_user { ['rocket', 'turtle', 'cumulus' ]:
     privileges => ['ALL = (root) NOPASSWD: ALL']
   }
