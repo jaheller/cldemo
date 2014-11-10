@@ -15,6 +15,14 @@ sntp -s wbench.lab.local
 # Allow Cumulus testing repo
 sed -i /etc/apt/sources.list -e 's/^#\s*\(deb.*testing.*\)$/\1/g'
 
+# push root & cumulus ssh keys
+URL="http://wbench.lab.local/ansible_authorized_keys"
+
+mkdir -p /root/.ssh 
+/usr/bin/wget -O /root/.ssh/authorized_keys $URL
+mkdir -p /home/cumulus/.ssh
+/usr/bin/wget -O /home/cumulus/.ssh/authorized_keys $URL
+
 # Workaround for CM-3812; clean out the apt cache before we run apt-get update
 $(rm -f /var/lib/apt/lists/partial/* /var/lib/apt/lists/* 2>/dev/null; true)
 
@@ -25,9 +33,6 @@ apt-get install puppet -y
 
 echo "Configuring puppet" | wall -n
 sed -i /etc/default/puppet -e 's/START=no/START=yes/'
-
-# Commenting out pluginsync until plugins need syncing
-#sed -i /etc/puppet/puppet.conf -e 's/\[main\]/\[main\]\npluginsync=true/'
 
 service puppet restart
 
