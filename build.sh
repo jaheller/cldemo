@@ -44,6 +44,11 @@ fi
 # sync git submodules
 git submodule init
 git submodule update
+if [ $? -ne 0 ]
+then
+    echo "git submodules failed to update; build will be incomplete"
+    exit 1
+fi
 
 architectures=(amd64 i386 powerpc)
 
