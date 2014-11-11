@@ -70,7 +70,8 @@ then
         do
             sleep 1
         done
-        ssh -i /home/cumulus/.ssh/id_rsa -oStrictHostKeyChecking=no cumulus@$DEVID
+        ssh -i /home/cumulus/.ssh/id_rsa -oStrictHostKeyChecking=no \
+            -o UserKnownHostsFile=/dev/null cumulus@$DEVID 2>/dev/null
     done
 fi
 
