@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+# duplicate wbench provided SSH keys to root user
+if [ ! -e /root/.ssh ]; then
+    cp -r /home/cumulus/.ssh /root/.ssh
+fi
+
+# copy public key to web root
+if [ ! -f /var/www/ansible_authorized_keys ]; then
+    cp /root/.ssh/id_rsa.pub /var/www/authorized_keys
+    cp /root/.ssh/id_rsa.pub /var/www/ansible_authorized_keys
+fi
+
 set -e
 
 ln -fs /usr/local/cumulus/bin/cw-mux /usr/local/bin/cw-mux
