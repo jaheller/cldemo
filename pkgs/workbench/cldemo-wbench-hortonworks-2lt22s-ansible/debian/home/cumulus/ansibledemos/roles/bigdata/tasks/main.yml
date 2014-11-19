@@ -1,3 +1,7 @@
+- name: configure server /etc/network/interfaces
+  template: src=../templates/server-interfaces.j2 dest=/etc/network/interfaces
+  notify: restart server networking
+
 - name: install python-pycurl
   apt: pkg=python-pycurl state=latest
 
@@ -10,30 +14,64 @@
 - name: add hortonworks utils repo
   apt_repository: repo='deb http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.19/repos/ubuntu12 HDP-UTILS main' state=present
 
-- name: install hadoop pkg
-  apt: name=hadoop update_cache=yes
+- name: install hadoop pkgs
+  apt: name={{item}} update_cache=yes
+  with_items:
+  - hadoop
+  - hadoop-client
+  - hadoop-hdfs
+  - hadoop-mapreduce
+  - hadoop-yarn
+  - libhdfs0
+  - libhdfs0-dev
+  - ntp
+  - openssl
+  - openjdk-7-jre
 
-- name: install hadoop-hfs pkg
-  apt: name=hadoop-hdfs update_cache=yes
+- name: create a path for java /usr/java
+  file: state=directory path=/usr/java/
 
-- name: install libhdfs0 pkg
-  apt: name=libhdfs0 update_cache=yes
+- name: create a symlink for java into /usr/java/default
+  file: src=/usr/lib/jvm/java-7-openjdk-amd64/jre state=link path=/usr/java/default
 
-- name: install libhdfs0-dev pkg
-  apt: name=libhdfs0-dev update_cache=yes
+- name: clean out default hadoop config /etc/hadoop/conf/*
+  shell: /bin/rm /etc/hadoop/conf/*
+  args:
+    removes: /etc/hadoop/conf/slaves
 
-- name: install hadoop-yarn pkg
-  apt: name=hadoop-yarn update_cache=yes
+- name: configure server /etc/hadoop/conf/*
+  template: src=../templates/server-{{item}}.j2 dest=/etc/hadoop/conf/{{item}} mode=755
+  with_items:
+    - capacity-scheduler.xml
+    - commons-logging.properties
+    - container-executor.cfg
+    - core-site.xml
+    - createDirs.sh
+    - directories.sh
+    - hadoop-env.sh
+    - hadoop-metrics2.properties-GANGLIA
+    - hadoop-metrics2.properties
+    - hadoop-policy.xml
+    - hdfs-site.xml
+    - health_check
+    - log4j.properties
+    - mapred-queue-acls.xml
+    - mapred-site.xml
+    - usersAndGroups.sh
+    - yarn-env.sh
+    - yarn-site.xml
 
-- name: install hadoop-mapreduce pkg
-  apt: name=hadoop-mapreduce update_cache=yes
+- name: add hadoop environments scripts to bash.bashrc
+  lineinfile: dest=/etc/bash.bashrc line="{{item}}"
+  with_items:
+    - "if [ -f /etc/hadoop/conf/directories.sh ]; then"
+    - ". /etc/hadoop/conf/directories.sh"
+    - "fi;"
+    - "if [ -f /etc/hadoop/conf/usersAndGroups.sh ]; then"
+    - ". /etc/hadoop/conf/usersAndGroups.sh"
+    - "fi ;"
 
-- name: install hadoop-client pkg
-  apt: name=hadoop-client update_cache=yes
-
-- name: install openssl pkg
-  apt: name=openssl update_cache=yes
-
-- name: configure server /etc/network/interfaces
-  template: src=../templates/server-interfaces.j2 dest=/etc/network/interfaces
-  notify: restart server networking
+- name: create hadoop data directories
+  command: /bin/bash createDirs.sh
+  args:
+    chdir: /etc/hadoop/conf 
