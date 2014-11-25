@@ -42,8 +42,10 @@ else
 fi
 
 # sync git submodules
-git submodule init
-git submodule update
+/usr/bin/git submodule init
+/usr/bin/git submodule update
+/usr/bin/git submodule foreach git pull origin master
+
 if [ $? -ne 0 ]
 then
     echo "git submodules failed to update; build will be incomplete"
