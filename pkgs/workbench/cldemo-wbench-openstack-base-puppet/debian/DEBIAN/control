@@ -1,9 +1,0 @@
-Package: cldemo-wbench-openstack-base-puppet
-Version: 0.1
-Section: base
-Priority: optional
-Architecture: all
-Depends: cldemo-wbench-base-puppet, cldemo-wbench-osinstaller-ubuntuserver-trusty-puppet, cldemo-wbench-openvpn, puppetdb
-Maintainer: Nat Morris <nat@cumulusnetworks.com>
-Description: Openstack driven by Puppet
-  Puppet managed Openstack using PuppetLabs modules
