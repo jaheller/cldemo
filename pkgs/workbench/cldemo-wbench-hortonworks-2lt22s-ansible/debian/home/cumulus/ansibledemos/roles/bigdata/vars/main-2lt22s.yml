@@ -20,7 +20,8 @@ server_interfaces:
       up: ip route add 10.4.0.0/16 via 10.4.2.1 dev eth3
 
 hadoop:
-  primary_node: server1
+  primary_node: server1-hadoop
+  interface: eth3
   mapreduce_map_java_opts: -Xmx768m
   mapreduce_map_memory_mb: 1024
   mapreduce_reduce_java_opts: -Xmx1536m

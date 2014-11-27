@@ -1,3 +1,8 @@
+- name: add -hadoop entries to /etc/hosts for hadoop binding interface
+  lineinfile: dest=/etc/hosts regexp='.*{{ item }}-hadoop$' line="{{server_interfaces[item][hadoop.interface]["address"]}} {{item}}-hadoop" state=present
+  when: server_interfaces[item][hadoop.interface]["address"] is defined
+  with_items: groups['bigdata_servers']
+
 - name: configure server /etc/network/interfaces
   template: src=../templates/server-interfaces.j2 dest=/etc/network/interfaces
   notify: restart server networking
