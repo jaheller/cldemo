@@ -4,7 +4,7 @@
   with_items: groups['bigdata_servers']
 
 - name: configure server /etc/network/interfaces
-  template: src=../templates/server-interfaces.j2 dest=/etc/network/interfaces
+  template: src=server-interfaces.j2 dest=/etc/network/interfaces
   notify: restart server networking
 
 - name: install python-pycurl
@@ -45,7 +45,7 @@
     removes: /etc/hadoop/conf/slaves
 
 - name: configure server /etc/hadoop/conf/*
-  template: src=../templates/server-{{item}}.j2 dest=/etc/hadoop/conf/{{item}} mode=755
+  template: src=server-{{item}}.j2 dest=/etc/hadoop/conf/{{item}} mode=755
   with_items:
     - capacity-scheduler.xml
     - commons-logging.properties
@@ -80,3 +80,17 @@
   command: /bin/bash createDirs.sh
   args:
     chdir: /etc/hadoop/conf 
+
+- name: create init scripts
+  template: src=server-init-script.j2 
+            dest=/etc/init.d/{{item.serviceclass}}-{{item.service}}
+            mode=755
+  with_items:
+  - { serviceclass: hadoop, service: namenode, user: hdfs }
+  - { serviceclass: hadoop, service: datanode, user: hdfs }
+  - { serviceclass: yarn, service: resourcemanager, user: yarn }
+  - { serviceclass: yarn, service: nodemanager, user: yarn }
+  - { serviceclass: mapred, service: historyserver, user: mapred }
+
+- name: create client user
+  user: name={{hadoop.client_user}} groups=users

@@ -23,6 +23,14 @@
 - hosts: bigdata_servers
   user: root
   roles:
-    - bigdata
+    - bigdata-common
+    - bigdata-slave
   vars_files:
-   - roles/bigdata/vars/main-2lt22s.yml
+   - roles/bigdata-common/vars/main-2lt22s.yml
+
+- hosts: server1
+  user: root
+  roles:
+    - bigdata-master
+  vars_files:
+   - roles/bigdata-common/vars/main-2lt22s.yml
