@@ -31,6 +31,6 @@ interface_items.each do |item|
 end
 
 service "quagga" do
-	supports :status => true, :restart => true
-	action [ :enable, :start ]
+	supports :restart => true
+	action [ :enable ]
 end
