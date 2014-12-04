@@ -12,6 +12,14 @@ exec >/var/log/autoprovision 2>&1
 
 trap error ERR
 
+# push root & cumulus ssh keys
+URL="http://wbench.lab.local/ansible_authorized_keys"
+
+mkdir -p /root/.ssh
+/usr/bin/wget -O /root/.ssh/authorized_keys $URL
+mkdir -p /home/cumulus/.ssh
+/usr/bin/wget -O /home/cumulus/.ssh/authorized_keys $URL
+chown -R cumulus:cumulus /home/cumulus/.ssh
 
 # Workaround for CM-3812; clean out the apt cache before we run apt-get update
 $(rm -f /var/lib/apt/lists/partial/* /var/lib/apt/lists/* 2>/dev/null; true)
@@ -26,11 +34,12 @@ echo "Configuring Chef" | wall -n
 
 [[ -d /etc/chef ]] || mkdir /etc/chef
 
-omask=$(umask)
+#omask=$(umask)
 
-umask 0077
+#umask 0077
 curl http://192.168.0.1/chef-validator.pem >/etc/chef/validation.pem || echo "Failed to download validation certificate"
-umask $omask
+chmod 0400 /etc/chef/validation.pem
+#umask $omask
 
 if [[ ! -f /etc/chef/client.rb ]]; then
   cat <<EOF >/etc/chef/client.rb
