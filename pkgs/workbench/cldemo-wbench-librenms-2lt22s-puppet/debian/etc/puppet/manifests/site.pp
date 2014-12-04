@@ -34,7 +34,10 @@ node 'leaf1.lab.local' {
     }
     include ospfunnum::role::switchbase,
     snmpd
-    class { 'portsconf' : switchtype => '40G' }
+    class { 'portsconf' : 
+      switchtype => '40G',
+      stage      => 'setup',
+    } 
 }
 
 node 'leaf2.lab.local' {
@@ -51,5 +54,8 @@ node 'leaf2.lab.local' {
     }
     include ospfunnum::role::switchbase,
     snmpd
-    class { 'portsconf' : switchtype => '40G' }
+    class { 'portsconf' :
+      switchtype => '40G'.
+      stage      => 'setup',
+    }
 }
