@@ -11,6 +11,7 @@ sleep 5
 /usr/local/sbin/knife_configure.expect
 
 pushd /usr/local/share/chef
+	knife cookbook upload sysctl 
 	knife cookbook upload cldemo_base
 	knife role from file roles/switch.json
 
