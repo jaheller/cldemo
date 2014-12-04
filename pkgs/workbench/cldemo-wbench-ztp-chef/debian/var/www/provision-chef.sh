@@ -33,13 +33,8 @@ apt-get install curl chef -y
 echo "Configuring Chef" | wall -n
 
 [[ -d /etc/chef ]] || mkdir /etc/chef
-
-#omask=$(umask)
-
-#umask 0077
 curl http://192.168.0.1/chef-validator.pem >/etc/chef/validation.pem || echo "Failed to download validation certificate"
 chmod 0400 /etc/chef/validation.pem
-#umask $omask
 
 if [[ ! -f /etc/chef/client.rb ]]; then
   cat <<EOF >/etc/chef/client.rb
