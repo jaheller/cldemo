@@ -27,4 +27,4 @@
 	url = git@github.com:CumulusNetworks/cumulus-openstack-puppet.git
 [submodule "pkgs/workbench/cldemo-wbench-base-chef/debian/usr/local/share/chef/cookbooks/sysctl"]
 	path = pkgs/workbench/cldemo-wbench-base-chef/debian/usr/local/share/chef/cookbooks/sysctl
-	url = git@github.com:Youscribe/sysctl-cookbook.git
+	url = git@github.com:rcbops-cookbooks/sysctl.git
