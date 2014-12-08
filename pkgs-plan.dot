@@ -71,19 +71,20 @@ digraph G {
     "cldemo-wbench-ztp-puppet" [ style=filled fillcolor=green ]
     
     // CFEngine demos
-    "cldemo-wbench-ztpbasic-1s-cfengine" [ style=filled fillcolor=yellow shape=rectangle ];
-    "cldemo-wbench-ztpbasic-1s-cfengine" -> "cldemo-wbench-base-cfengine";
-    "cldemo-wbench-ospfunnum-2s-cfengine" [ style=filled fillcolor=yellow shape=rectangle ];
-    "cldemo-wbench-ospfunnum-2s-cfengine" -> "cldemo-wbench-ospfunnum-base-cfengine";
-    "cldemo-wbench-ospfunnum-2s2l-cfengine" [ style=filled fillcolor=yellow shape=rectangle ];
-    "cldemo-wbench-ospfunnum-2s2l-cfengine" -> "cldemo-wbench-ospfunnum-base-cfengine";
-    "cldemo-wbench-ospfunnum-base-cfengine" -> "cldemo-wbench-base-cfengine";
+    // CE-252: Disable CFEngine
+    // "cldemo-wbench-ztpbasic-1s-cfengine" [ style=filled fillcolor=yellow shape=rectangle ];
+    // "cldemo-wbench-ztpbasic-1s-cfengine" -> "cldemo-wbench-base-cfengine";
+    // "cldemo-wbench-ospfunnum-2s-cfengine" [ style=filled fillcolor=yellow shape=rectangle ];
+    // "cldemo-wbench-ospfunnum-2s-cfengine" -> "cldemo-wbench-ospfunnum-base-cfengine";
+    // "cldemo-wbench-ospfunnum-2s2l-cfengine" [ style=filled fillcolor=yellow shape=rectangle ];
+    // "cldemo-wbench-ospfunnum-2s2l-cfengine" -> "cldemo-wbench-ospfunnum-base-cfengine";
+    // "cldemo-wbench-ospfunnum-base-cfengine" -> "cldemo-wbench-base-cfengine";
 
     // CFEngine infra
-    "cldemo-wbench-base-cfengine" -> "cldemo-wbench-ztp-cfengine"
-    "cldemo-wbench-base-cfengine" -> "cldemo-wbench-base";
-    "cfengine-community" [ shape=hexagon ];
-    "cldemo-wbench-base-cfengine" -> "cfengine-community";
+    // "cldemo-wbench-base-cfengine" -> "cldemo-wbench-ztp-cfengine"
+    // "cldemo-wbench-base-cfengine" -> "cldemo-wbench-base";
+    // "cfengine-community" [ shape=hexagon ];
+    // "cldemo-wbench-base-cfengine" -> "cfengine-community";
 
     // Chef demos
 

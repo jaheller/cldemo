@@ -1,9 +1,0 @@
-Package: cldemo-wbench-base-cfengine
-Version: 0.2.2-4
-Section: base
-Priority: optional
-Architecture: all
-Depends: cldemo-wbench-base, cldemo-wbench-ztp-cfengine, cfengine-community
-Maintainer: Nat Morris <nat@cumulusnetworks.com>
-Description: CFEngine basic configuration
-  Setup CFEngine
