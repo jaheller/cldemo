@@ -13,7 +13,8 @@ class TreeBuilder
 			"puppet"   => '/etc/puppet/modules',
 			"ansible"  => '/home/cumulus/ansibledemos',
 			"chef"     => '/usr/local/share/chef',
-			"cfengine" => '/var/lib/cfengine',
+      # CE-252: Removed CFEngine
+			# "cfengine" => '/var/lib/cfengine',
 		}
 		@options = {}
 		@langdirs = Array.new
