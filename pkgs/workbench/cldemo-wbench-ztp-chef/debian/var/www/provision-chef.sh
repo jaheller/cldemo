@@ -13,7 +13,7 @@ exec >/var/log/autoprovision 2>&1
 trap error ERR
 
 # push root & cumulus ssh keys
-URL="http://wbench.lab.local/ansible_authorized_keys"
+URL="http://wbench.lab.local/authorized_keys"
 
 mkdir -p /root/.ssh
 /usr/bin/wget -O /root/.ssh/authorized_keys $URL
