@@ -13,7 +13,7 @@ trap error ERR
 sed -i /etc/apt/sources.list -e 's/^#\s*\(deb.*testing.*\)$/\1/g'
 
 # push root & cumulus ssh keys
-URL="http://wbench.lab.local/ansible_authorized_keys"
+URL="http://wbench.lab.local/authorized_keys"
 
 mkdir -p /root/.ssh 
 /usr/bin/wget -O /root/.ssh/authorized_keys $URL

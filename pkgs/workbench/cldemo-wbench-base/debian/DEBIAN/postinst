@@ -6,9 +6,8 @@ if [ ! -e /root/.ssh ]; then
 fi
 
 # copy public key to web root
-if [ ! -f /var/www/ansible_authorized_keys ]; then
+if [ ! -f /var/www/authorized_keys ]; then
     cp /root/.ssh/id_rsa.pub /var/www/authorized_keys
-    cp /root/.ssh/id_rsa.pub /var/www/ansible_authorized_keys
 fi
 
 set -e
