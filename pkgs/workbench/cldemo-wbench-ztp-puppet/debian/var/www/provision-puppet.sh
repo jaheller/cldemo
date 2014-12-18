@@ -30,6 +30,9 @@ apt-get upgrade -y
 apt-get install puppet -y
 
 echo "Configuring puppet" | wall -n
+#comment out templatedir in puppet 
+sed -i /etc/puppet/puppet.conf -e 's/^template/# template/'
+
 sed -i /etc/default/puppet -e 's/START=no/START=yes/'
 
 service puppet restart
