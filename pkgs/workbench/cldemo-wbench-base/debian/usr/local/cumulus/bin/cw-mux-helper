@@ -87,16 +87,14 @@ then
         DEVNODE=servers
     fi
     DEVID=$2
-    CONSRV=`jq -r ".[] | .workbench.$DEVNODE.$DEVID.console_server_id" $JSONPATH`
-    CONPORT=`jq -r ".[] | .workbench.$DEVNODE.$DEVID.console_ssh_port" $JSONPATH`
-    CONUSER=`jq -r ".[] | .workbench.$DEVNODE.$DEVID.console_user" $JSONPATH`
+    CONPORT=`jq -r ".[] | .workbench.$DEVNODE.$DEVID.console_muxport" $JSONPATH`
     while :
     do
         clear
         echo ""
         echo "$DEVTYPE: $DEVID"
         echo ""
-        ssh -i /home/cumulus/.ssh/id_rsa -oStrictHostKeyChecking=no $CONUSER@$CONSRV -p $CONPORT
+        telnet console $CONPORT
     done
 fi
 
