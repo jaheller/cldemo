@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # install Ubuntu on the servers
-cw-pxehelper -o ubuntuserver-trusty-ansible -s server1 -n
-cw-pxehelper -o ubuntuserver-trusty-ansible -s server2 -n
+cw-pxehelper -o ubuntuserver-trusty -s server1 -n
+cw-pxehelper -o ubuntuserver-trusty -s server2 -n
 
 # restart the switches, so they grab the SSH key
 cw-swpower -o reset -a
