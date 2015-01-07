@@ -35,6 +35,9 @@ fi
 if [ "$BRANCH" == "master" ] && [ "$repo" == "testing" ]; then
     DESTOK=1
 fi
+if [ "$BRANCH" == "HEAD" ] && [ "$repo" == "stable" ]; then
+    DESTOK=1
+fi
 
 if [ "$repo" == "$BRANCHREPO" ]; then
     DESTOK=1
