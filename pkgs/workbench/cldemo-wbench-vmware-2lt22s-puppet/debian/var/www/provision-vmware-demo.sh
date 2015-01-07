@@ -23,7 +23,7 @@ function error() {
   /usr/bin/wget -O /tmp/puppetlabs-release-wheezy.deb https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb 
   /usr/bin/dpkg -i /tmp/puppetlabs-release-wheezy.deb
   # push root & cumulus ssh keys
-  URL="http://wbench.lab.local/ansible_authorized_keys"
+  URL="http://wbench.lab.local/authorized_keys"
 
   mkdir -p /root/.ssh 
   /usr/bin/wget -O /root/.ssh/authorized_keys $URL
