@@ -33,6 +33,12 @@ then
     echo "$TOOLMISSING tools/cmds missing"
     exit 1
 fi
+# GPG location depends varies; Jenkins slaves keep them in /var/repo
+if [ -e /var/repo/cldemo ]
+  KEYPATH=/var/repo/cldemo
+else
+  KEYPATH=/mnt/repo/keyrings/cldemo
+fi
 
 # clean up
 if [ ! -e repo-build ]; then
@@ -117,7 +123,7 @@ fi
 if [ $SIGNRELEASE -eq 1 ]; then
     # signing Release
     echo ""
-    if ! gpg -a --yes --homedir /mnt/repo/keyrings/cldemo --default-key 9804E228 --output repo-build/Release.gpg --detach-sig repo-build/Release
+    if ! gpg -a --yes --homedir $KEYPATH --default-key 9804E228 --output repo-build/Release.gpg --detach-sig repo-build/Release
     then
         echo "** ERROR *** problem signing Release file"
         exit 1
