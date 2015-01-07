@@ -34,7 +34,7 @@ then
     exit 1
 fi
 # GPG location depends varies; Jenkins slaves keep them in /var/repo
-if [ -e /var/repo/cldemo ]
+if [ -e /var/repo/cldemo ]; then
   KEYPATH=/var/repo/cldemo
 else
   KEYPATH=/mnt/repo/keyrings/cldemo
