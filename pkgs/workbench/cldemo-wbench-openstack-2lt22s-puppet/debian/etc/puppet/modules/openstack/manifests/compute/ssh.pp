@@ -1,5 +1,5 @@
 class openstack::compute::ssh {
-  file { '/etc/ssh/sshd_config': 
+  file { '/etc/ssh/sshd_config':
     ensure  => present,
     owner   => 'root',
     group   => 'root',

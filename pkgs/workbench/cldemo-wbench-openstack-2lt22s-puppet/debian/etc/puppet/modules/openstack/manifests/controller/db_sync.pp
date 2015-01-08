@@ -44,6 +44,6 @@ exec { '/usr/bin/nova-manage db sync':
   #                       'nova-conductor',
   #                       'nova-novncproxy',
   #                       'nova-compute',] ],
-  # 
+  #
 }
 }

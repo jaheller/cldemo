@@ -67,6 +67,4 @@ class openstack::controller::glance {
     require => Package['glance'],
     notify  => Service['glance-registry'],
   }
-
-
 }

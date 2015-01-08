@@ -19,7 +19,7 @@ class openstack::role::controller {
       }
     },
     stage => 'setup',
-  } 
+  }
 
   class { 'openstack::controller::mysqlextras':
     stage => 'setup',
@@ -42,7 +42,7 @@ class openstack::role::controller {
 
     class { 'openstack::controller::glance': }
 
-    class { 'openstack::controller::rabbitmq::refresh': 
+    class { 'openstack::controller::rabbitmq::refresh':
       stage =>  'runtime',
     }->
     class { 'openstack::controller::db_sync':
