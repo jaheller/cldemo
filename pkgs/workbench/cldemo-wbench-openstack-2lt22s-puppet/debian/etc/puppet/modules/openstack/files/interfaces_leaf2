@@ -56,7 +56,7 @@ iface bridge
 #mlag
 auto peer
 iface peer
-    bond-slaves swp17
+    bond-slaves swp17 swp18
     bond-mode 802.3ad
     bond-miimon 100
     bond-use-carrier 1
