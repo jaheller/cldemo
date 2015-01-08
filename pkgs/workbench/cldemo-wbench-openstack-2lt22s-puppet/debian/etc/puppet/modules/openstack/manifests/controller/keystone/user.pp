@@ -1,7 +1,7 @@
 class openstack::controller::keystone::user (
-  $email,
-  $password,
-  $user                   = 'user',
+  $email                 = '',
+  $password              = '',
+  $user                  = 'user',
   $user_tenant           = 'openstack',
   $user_tenant_desc      = 'user tenant',
 ) {

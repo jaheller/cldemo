@@ -9,25 +9,25 @@ class openstack::interfaces {
 
   if $::operatingsystem == 'CumulusLinux' {
     exec { '/sbin/ifreload -a':
-        subscribe => File['/etc/network/interfaces'],
+        subscribe   => File['/etc/network/interfaces'],
         refreshonly => true,
     }
   }
   else {
     exec { "/sbin/ifdown --exclude=lo -a && /sbin/ifup --exclude=lo -a":
-        subscribe => File['/etc/network/interfaces'],
+        subscribe   => File['/etc/network/interfaces'],
         refreshonly => true,
     }
 
     exec { '/sbin/ip link set dev eth2 up; /sbin/ip link set dev eth3 up':
-        require => File['/etc/network/interfaces/'],
+        require   => File['/etc/network/interfaces/'],
         logoutput => on_failure,
         }
 
     exec { '/sbin/ifup bond0':
-        onlyif => "/usr/bin/test ! -e /proc/net/bonding/bond0",
+        onlyif    => "/usr/bin/test ! -e /proc/net/bonding/bond0",
         logoutput => on_failure,
-        require => File['/etc/network/interfaces/']
+        require   => File['/etc/network/interfaces/']
         }
 
   }

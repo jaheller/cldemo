@@ -16,7 +16,7 @@ class openstack::quagga {
         owner   => root,
         group   => quaggavty,
         mode    => '0644',
-	source => "puppet:///modules/openstack/Quagga.conf_$hostname",
+        source  => "puppet:///modules/openstack/Quagga.conf_${::hostname}",
         notify  => Service['quagga']
     }
 }

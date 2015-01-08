@@ -27,7 +27,8 @@ node 'server2.lab.local' {
  node 'spine1.lab.local' {
 
     include base::role::switch,
-    openstack::interfaces
+    openstack::interfaces,
+    base::ptm
 
    class { 'openstack::mlag':
      peer_ip => '169.254.99.2',
@@ -39,7 +40,8 @@ node 'server2.lab.local' {
  node 'spine2.lab.local' {
 
     include base::role::switch,
-    openstack::interfaces
+    openstack::interfaces,
+    base::ptm
 
    class { 'openstack::mlag':
      peer_ip => '169.254.99.1',
@@ -50,7 +52,8 @@ node 'server2.lab.local' {
  node 'leaf1.lab.local' {
 
     include base::role::switch,
-    openstack::interfaces
+    openstack::interfaces,
+    base::ptm
 
    class { 'openstack::mlag':
      peer_ip => '169.254.99.2',
@@ -66,7 +69,8 @@ node 'server2.lab.local' {
  node 'leaf2.lab.local' {
 
     include base::role::switch,
-    openstack::interfaces
+    openstack::interfaces,
+    base::ptm
   
    class { 'openstack::mlag':
      peer_ip => '169.254.99.1',

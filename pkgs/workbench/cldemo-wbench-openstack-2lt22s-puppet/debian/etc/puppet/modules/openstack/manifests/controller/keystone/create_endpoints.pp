@@ -89,6 +89,6 @@ class openstack::controller::keystone::create_endpoints {
     #                       'nova-conductor',
     #                       'nova-novncproxy',
     #                       'nova-compute', ] ],
-    # 
+    #
   }
 }

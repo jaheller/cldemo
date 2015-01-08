@@ -8,16 +8,16 @@ class openstack::controller::nova {
     grant    => 'ALL',
   } ->
 
-  package { [ 'nova-api', 
-              'nova-cert', 
-              'nova-conductor', 
+  package { [ 'nova-api',
+              'nova-cert',
+              'nova-conductor',
               'nova-consoleauth',
               'nova-novncproxy',
               'nova-scheduler',
               'python-novaclient',
-              'nova-compute-kvm', 
+              'nova-compute-kvm',
               'nova-network',
-              'vlan', 
+              'vlan',
               'ifenslave', ]:
     ensure  => installed,
   }
@@ -25,7 +25,7 @@ class openstack::controller::nova {
   file { '/var/lib/nova/nova.sqlite':
     ensure  => absent,
     require => Package['nova-api'],
-    notify => Service[ ['nova-api',
+    notify  => Service[ ['nova-api',
                       'nova-cert',
                       'nova-consoleauth',
                       'nova-scheduler',
@@ -47,7 +47,7 @@ class openstack::controller::nova {
                       'nova-scheduler',
                       'nova-conductor',
                       'nova-novncproxy',
-                      'nova-compute', 
+                      'nova-compute',
                       'nova-network', ] ],
 
   }
@@ -57,8 +57,8 @@ class openstack::controller::nova {
               'nova-consoleauth',
               'nova-scheduler',
               'nova-conductor',
-              'nova-novncproxy', 
-              'nova-compute', 
+              'nova-novncproxy',
+              'nova-compute',
               'nova-network', ]:
     ensure     => running,
     hasstatus  => true,

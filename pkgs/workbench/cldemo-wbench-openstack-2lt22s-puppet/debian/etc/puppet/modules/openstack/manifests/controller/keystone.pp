@@ -7,7 +7,7 @@ class openstack::controller::keystone {
     grant    => 'ALL',
   }->
 
-  package { 'keystone': 
+  package { 'keystone':
     ensure => installed,
   } ->
 
@@ -17,7 +17,7 @@ class openstack::controller::keystone {
     hasstatus  => true,
     hasrestart => true,
     require    => Package['keystone'],
-  } 
+  }
 
   file { '/etc/keystone/keystone.conf':
     ensure  => present,
