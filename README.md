@@ -53,6 +53,24 @@ Install the git and dpkg tools:
 	julia@devhost:~$ sudo apt-get install git apt-utils dpkg-dev
 	julia@devhost:~$ git clone git@github.com:CumulusNetworks/cldemo.git
 	
+### Testing
+
+The test script runs lint tools for Puppet, Ansible & Chef against the
+manifests/playbooks/cookbooks and reports any issues.
+
+  julia@devhost:~$ cd cldemo
+	julia@devhost:~/cldemo$ ./test.sh
+
+The test.sh script will check for the following dependencies:
+
+* puppet-lint (Ruby)
+* ansible-lint (Python)
+* foodcritic (Ruby)
+
+It will attempt to install them, and their dependencies, if they are not
+found. You will require a working Ruby 2.x, with a working Rubygems,
+installed, and a working version of Python and Python Pip.
+
 ### Building
 
 The build script compiles packages from within pkgs/*; it also generates the 
