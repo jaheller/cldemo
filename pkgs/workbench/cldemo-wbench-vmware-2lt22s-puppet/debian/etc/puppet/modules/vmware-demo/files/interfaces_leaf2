@@ -6,7 +6,7 @@ iface lo inet loopback
 auto eth0
 iface eth0 inet dhcp
 
-Bond to the spines
+# Bond to the spines
 auto uplink
 iface uplink
     bond-slaves swp1s0 swp1s1 swp1s2 swp1s3
