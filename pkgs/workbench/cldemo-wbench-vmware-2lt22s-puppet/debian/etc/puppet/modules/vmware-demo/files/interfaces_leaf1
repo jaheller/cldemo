@@ -7,16 +7,16 @@ auto eth0
 iface eth0 inet dhcp
 
 # Bond to the spines
-# auto uplink
-# iface uplink
-#     bond-slaves swp1s0 swp1s1 swp1s2 swp1s3
-#     bond-mode 802.3ad
-#     bond-miimon 100
-#     bond-use-carrier 1
-#     bond-lacp-rate 1
-#     bond-min-links 1
-#     bond-xmit-hash-policy layer3+4
-# 
+auto uplink
+iface uplink
+    bond-slaves swp1s0 swp1s1 swp1s2 swp1s3
+    bond-mode 802.3ad
+    bond-miimon 100
+    bond-use-carrier 1
+    bond-lacp-rate 1
+    bond-min-links 1
+    bond-xmit-hash-policy layer3+4
+
 
 # Bond to server1
 auto esx-server1
