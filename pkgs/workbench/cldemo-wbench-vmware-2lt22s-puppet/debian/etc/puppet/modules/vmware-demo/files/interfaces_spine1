@@ -44,6 +44,6 @@ iface peerlink
     bond-xmit-hash-policy layer3+4
     mtu 9000
 
-auto peerlink.4094
-iface peerlink.4094
+auto peerlink.4093
+iface peerlink.4093
     address 169.254.1.1/30

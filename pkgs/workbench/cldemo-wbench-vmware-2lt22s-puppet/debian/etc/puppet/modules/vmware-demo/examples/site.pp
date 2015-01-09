@@ -37,7 +37,25 @@ node 'leaf2.lab.local' {
 }
 
 node 'spine1.lab.local' {
+  include base::role::switch,
+    vmware-demo::interfaces,
+    base::ptm
+
+  class { 'vmware-demo::clag':
+    peer_ip => '169.254.1.2',
+    peer_if => 'peerlink.4093',
+    sys_mac => '44:38:39:FF:40:93',
+  }
 }
 
 node 'spine2.lab.local' {
+  include base::role::switch,
+    vmware-demo::interfaces,
+    base::ptm
+
+  class { 'vmware-demo::clag':
+    peer_ip => '169.254.1.1',
+    peer_if => 'peerlink.4093',
+    sys_mac => '44:38:39:FF:40:93',
+  }
 }
