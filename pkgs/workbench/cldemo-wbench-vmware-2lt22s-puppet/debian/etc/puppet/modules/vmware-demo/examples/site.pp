@@ -3,7 +3,9 @@ node 'wbench.lab.local' {
 
 node 'leaf1.lab.local' {
   include base::role::switch,
-    vmware-demo::interfaces
+    vmware-demo::interfaces,
+    base::ptm
+
 
   class { 'portsconf':
     switchtype => '40G',
@@ -19,7 +21,8 @@ node 'leaf1.lab.local' {
 
 node 'leaf2.lab.local' {
   include base::role::switch,
-    vmware-demo::interfaces
+    vmware-demo::interfaces,
+    base::ptm
 
   class { 'portsconf':
     switchtype => '40G',
