@@ -15,4 +15,6 @@ set -e
 ln -fs /usr/local/cumulus/bin/cw-mux /usr/local/bin/cw-mux
 ln -fs /usr/local/cumulus/bin/cw-mux-helper /usr/local/bin/cw-mux-helper
 
+chown -R cumulus:cumulus /home/cumulus/
+
 exit 0

@@ -7,4 +7,6 @@ cw-pxehelper -o ubuntuserver-trusty -s server2 -n
 # restart the switches, so they grab the SSH key
 cw-swpower -o reset -a
 
+chown -R cumulus:cumulus /home/cumulus/
+
 exit 0
