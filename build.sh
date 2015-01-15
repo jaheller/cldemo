@@ -82,7 +82,7 @@ do
         if [ ! -e pkgs/$REPO/$PKG/debian/DEBIAN/control ]; then
             echo "** WARNING ** skipping $REPO/$PKG no control file"
         else
-            if ! dpkg-deb --build pkgs/$REPO/$PKG/debian repo-build/$REPO/binary-amd64/${PKG}_amd64.deb
+            if ! fakeroot dpkg-deb --build pkgs/$REPO/$PKG/debian repo-build/$REPO/binary-amd64/${PKG}_amd64.deb
             then
                 echo "** ERROR ** while building $REPO/$PKG"
                 exit 1
