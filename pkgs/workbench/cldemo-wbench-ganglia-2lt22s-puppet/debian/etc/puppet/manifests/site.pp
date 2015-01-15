@@ -50,6 +50,8 @@ node 'leaf2.lab.local' {
       switchtype => '40G',
       stage      => 'setup',
     }
+}
+
 node 'wbench.lab.local' {
     $data_sources = [ 'wbench.lab.local' ]
     $websites = [
