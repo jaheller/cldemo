@@ -36,4 +36,7 @@ service apache2 restart
 
 /usr/bin/php /var/www/librenms/discovery.php -h all
 /usr/bin/php /var/www/librenms/poller.php -h all
+
+#chmod rrd dir
+/bin/chmod -Rv a+rw /var/www/rrd/
 exit 0
