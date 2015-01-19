@@ -62,11 +62,26 @@ fi
 # server might not be running already
 tmux start-server
 
-# create session if doesn't already exist
+# create session if doesn't already exist, give the user the option to share
+# or detach if it does.
+DETACH="-d"
 if tmux list-sessions | grep -q "$SNAME:"
 then
+    echo "An existing session is in progress, do you wish to..."
+    select OPTION in "detach" "share";
+    do
+      case $OPTION in
+        "detach")
+        break
+        ;;
+        "share")
+        DETACH=""
+        break
+        ;;
+      esac
+    done
     echo "Existing session"
-    tmux att -d -t $SNAME
+    tmux att $DETACH  -t $SNAME
     exit 0
 else
     echo "No session exists"
