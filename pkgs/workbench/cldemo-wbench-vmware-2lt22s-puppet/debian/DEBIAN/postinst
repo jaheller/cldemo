@@ -6,6 +6,11 @@ if [ -f /var/www/provision.sh ]; then
     rm /var/www/provision.sh
 fi
 
+# copy topology.dot for ptmd to proper directory
+if [ ! -f /etc/puppet/modules/base/files/topology.dot ]; then
+      cp /var/www/topology.dot /etc/puppet/modules/base/files/topology.dot
+fi
+
 # link the new one
 ln -s /var/www/provision-vmware-demo.sh /var/www/provision.sh
 

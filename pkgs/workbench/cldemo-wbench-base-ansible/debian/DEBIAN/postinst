@@ -8,7 +8,6 @@ if [ ! -d /home/cumulus/ansibledemos/roles/common/vars ]; then
     mkdir -p /home/cumulus/ansibledemos/roles/common/vars
 fi
 
-cp -f /var/www/topology.dot /home/cumulus/ansibledemos/roles/common/files
 cp -f /var/www/*.lic /home/cumulus/ansibledemos/roles/common/files
 
 chown -R cumulus:cumulus /home/cumulus/

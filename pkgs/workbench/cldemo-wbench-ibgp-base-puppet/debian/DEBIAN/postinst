@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-cp /var/www/topology.dot /etc/puppet/modules/ibgp/files/topology.dot
-
-exit 0
