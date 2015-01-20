@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+set -e
+# copy correct topology.dot for /var/www/topology.dot
+ln -fs /var/www/topology-clos-hosts-2lt22s.dot /var/www/topology.dot
+
+# copy topology.dot for ptmd to proper directory
+cp -f /var/www/topology.dot /home/cumulus/ansibledemos/roles/common/files
+
 # install Ubuntu on the servers
 cw-pxehelper -o ubuntuserver-trusty -s server1 -n
 cw-pxehelper -o ubuntuserver-trusty -s server2 -n

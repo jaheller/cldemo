@@ -9,6 +9,11 @@ fi
 # link the new one
 ln -s /var/www/provision-openstack.sh /var/www/provision.sh
 
+# copy topology.dot for ptmd to proper directory
+if [ ! -f /etc/puppet/modules/base/files/topology.dot ]; then
+      cp /var/www/topology.dot /etc/puppet/modules/base/files/topology.dot
+fi
+
 # make sure opt 239 is enabled in dhcp
 sed -i /etc/dhcp/dhcpd.pools -e 's/# option cumulus-provision-url/option cumulus-provision-url/'
 service isc-dhcp-server restart
