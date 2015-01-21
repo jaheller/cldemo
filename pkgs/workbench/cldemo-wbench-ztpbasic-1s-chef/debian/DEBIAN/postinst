@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-pushd /usr/local/share/chef
-	knife node from file nodes/leaf1.json
-popd
-
-exit 0
