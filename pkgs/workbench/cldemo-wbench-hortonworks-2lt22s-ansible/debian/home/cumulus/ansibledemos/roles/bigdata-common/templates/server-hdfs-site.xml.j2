@@ -54,7 +54,7 @@
   </property>
     <property>
     <name>dfs.namenode.http-address</name>
-    <value>{{hadoop.primary_node}}:50070</value>
+    <value>{{server_interfaces[hadoop.primary_node][hadoop.web_interface].address}}:50070</value>
   </property>
     <property>
     <name>dfs.client.read.shortcircuit.streams.cache.size</name>
@@ -70,7 +70,7 @@
   </property>
     <property>
     <name>dfs.datanode.ipc.address</name>
-    <value>0.0.0.0:8010</value>
+    <value>{{server_interfaces[ansible_hostname][hadoop.data_interface].address}}:8010</value>
   </property>
     <property>
     <name>dfs.namenode.name.dir</name>
@@ -78,7 +78,7 @@
   </property>
     <property>
     <name>dfs.journalnode.http-address</name>
-    <value>0.0.0.0:8480</value>
+    <value>{{server_interfaces[ansible_hostname][hadoop.web_interface].address}}:8480</value>
   </property>
     <property>
     <name>dfs.heartbeat.interval</name>
@@ -134,15 +134,15 @@
   </property>
     <property>
     <name>dfs.datanode.address</name>
-    <value>0.0.0.0:50010</value>
+    <value>{{server_interfaces[ansible_hostname][hadoop.data_interface].address}}:50010</value>
   </property>
     <property>
     <name>dfs.datanode.http.address</name>
-    <value>0.0.0.0:50075</value>
+    <value>{{server_interfaces[ansible_hostname][hadoop.web_interface].address}}:50075</value>
   </property>
     <property>
     <name>dfs.namenode.https-address</name>
-     <value>{{hadoop.primary_node}}:50470</value>
+     <value>{{server_interfaces[hadoop.primary_node][hadoop.web_interface].address}}:50470</value>
   </property>
     <property>
     <name>dfs.webhdfs.enabled</name>

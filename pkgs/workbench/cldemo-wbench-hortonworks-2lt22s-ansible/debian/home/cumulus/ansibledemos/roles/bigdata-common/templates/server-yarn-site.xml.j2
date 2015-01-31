@@ -2,7 +2,11 @@
   <configuration>
     <property>
     <name>yarn.nodemanager.address</name>
-    <value>0.0.0.0:45454</value>
+    <value>{{server_interfaces[ansible_hostname][hadoop.web_interface].address}}:45454</value>
+  </property>
+    <property>
+    <name>yarn.nodemanager.webapp.address</name>
+    <value>{{server_interfaces[ansible_hostname][hadoop.web_interface].address}}:8042</value>
   </property>
     <property>
     <name>yarn.nodemanager.local-dirs</name>
@@ -26,11 +30,11 @@
   </property>
     <property>
     <name>yarn.log.server.url</name>
-    <value>http://{{hadoop.primary_node}}:19888/jobhistory/logs</value>
+    <value>http://{{server_interfaces[hadoop.primary_node][hadoop.data_interface].address}}:19888/jobhistory/logs</value>
   </property>
     <property>
     <name>yarn.resourcemanager.admin.address</name>
-    <value>{{hadoop.primary_node}}:8141</value>
+    <value>{{server_interfaces[hadoop.primary_node][hadoop.web_interface].address}}:8141</value>
   </property>
     <property>
     <name>yarn.scheduler.maximum-allocation-mb</name>
@@ -102,7 +106,7 @@
   </property>
     <property>
     <name>yarn.resourcemanager.webapp.address</name>
-    <value>{{hadoop.primary_node}}:8088</value>
+    <value>{{server_interfaces[hadoop.primary_node][hadoop.web_interface].address}}:8088</value>
   </property>
     <property>
     <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
@@ -110,7 +114,7 @@
   </property>
     <property>
     <name>yarn.resourcemanager.address</name>
-    <value>{{hadoop.primary_node}}:8050</value>
+    <value>{{server_interfaces[hadoop.primary_node][hadoop.data_interface].address}}:8050</value>
   </property>
     <property>
     <name>yarn.nodemanager.admin-env</name>

@@ -57,7 +57,7 @@
   </property>
     <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://{{hadoop.primary_node}}:8020</value>
+    <value>hdfs://{{server_interfaces[hadoop.primary_node][hadoop.data_interface].address}}:8020</value>
   </property>
     <property>
     <name>mapreduce.jobtracker.webinterface.trusted</name>
