@@ -1,3 +1,6 @@
+- name: remove 127.0.1.1 reference from /etc/hosts
+  lineinfile: dest=/etc/hosts state=absent regexp=".*{{ansible_hostname}}$"
+
 - name: add -hadoop entries to /etc/hosts for hadoop binding interface
   lineinfile: dest=/etc/hosts regexp='.*{{ item }}-hadoop$' line="{{server_interfaces[item][hadoop.interface]["address"]}} {{item}}-hadoop" state=present
   when: server_interfaces[item][hadoop.interface]["address"] is defined
