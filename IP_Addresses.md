@@ -124,28 +124,29 @@ DHCP Pool - 192.168.0.100 - 192.168.0.200
 
 `2001:0db8:0002:1fff:ffff:ffff:ffff:ffff`
 
-| Topology | IPv4 subnet  | IPv6 subnet | Device A | Device B | Interface A | Interface B | IPv4 A    | IPv4 B    | IPv6 A | IPv6 B |
-|----------|--------------|-------------|----------|----------|-------------|-------------|-----------|-----------|--------|--------|
-| 2s       | 10.1.1.0/30  |             | leaf1    | leaf2    | swp1        | swp1        | 10.1.1.1  | 10.1.1.2  |        |        |
-| 2s       | 10.1.1.4/30  |             | leaf1    | leaf2    | swp2        | swp2        | 10.1.1.5  | 10.1.1.6  |        |        |
-| 2s       | 10.1.1.8/30  |             | leaf1    | leaf2    | swp3        | swp3        | 10.1.1.9  | 10.1.1.10 |        |        |
-| 2s       | 10.1.1.12/30 |             | leaf1    | leaf2    | swp4        | swp4        | 10.1.1.13 | 10.1.1.14 |        |        |
-| 2s2l     | 10.1.1.0/30  |             | leaf1    | spine1   | swp1        | swp1        | 10.1.1.1  | 10.1.1.2  |        |        |
-| 2s2l     | 10.1.1.4/30  |             | leaf1    | spine1   | swp2        | swp2        | 10.1.1.5  | 10.1.1.6  |        |        |
-| 2s2l     | 10.1.1.8/30  |             | leaf1    | spine1   | swp3        | swp3        | 10.1.1.9  | 10.1.1.10 |        |        |
-| 2s2l     | 10.1.1.12/30 |             | leaf1    | spine1   | swp4        | swp4        | 10.1.1.13 | 10.1.1.14 |        |        |
-| 2s2l     | 10.1.1.16/30 |             | leaf2    | spine2   | swp1        | swp1        | 10.1.1.17 | 10.1.1.18 |        |        |
-| 2s2l     | 10.1.1.20/30 |             | leaf2    | spine2   | swp2        | swp2        | 10.1.1.21 | 10.1.1.22 |        |        |
-| 2s2l     | 10.1.1.24/30 |             | leaf2    | spine2   | swp3        | swp3        | 10.1.1.25 | 10.1.1.26 |        |        |
-| 2s2l     | 10.1.1.28/30 |             | leaf2    | spine2   | swp4        | swp4        | 10.1.1.29 | 10.1.1.30 |        |        |
-| 2s2l     | 10.1.1.32/30 |             | leaf1    | spine2   | swp17       | swp17       | 10.1.1.33 | 10.1.1.34 |        |        |
-| 2s2l     | 10.1.1.36/30 |             | leaf1    | spine2   | swp18       | swp18       | 10.1.1.37 | 10.1.1.38 |        |        |
-| 2s2l     | 10.1.1.40/30 |             | leaf1    | spine2   | swp19       | swp19       | 10.1.1.41 | 10.1.1.42 |        |        |
-| 2s2l     | 10.1.1.44/30 |             | leaf1    | spine2   | swp20       | swp20       | 10.1.1.45 | 10.1.1.46 |        |        |
-| 2s2l     | 10.1.1.48/30 |             | leaf2    | spine1   | swp17       | swp17       | 10.1.1.49 | 10.1.1.50 |        |        |
-| 2s2l     | 10.1.1.52/30 |             | leaf2    | spine1   | swp18       | swp18       | 10.1.1.53 | 10.1.1.54 |        |        |
-| 2s2l     | 10.1.1.56/30 |             | leaf2    | spine1   | swp19       | swp19       | 10.1.1.57 | 10.1.1.58 |        |        |
-| 2s2l     | 10.1.1.60/30 |             | leaf2    | spine1   | swp20       | swp20       | 10.1.1.61 | 10.1.1.62 |        |        |
+| Topology | IPv4 subnet  | IPv6 subnet | Device A | Device B | Interface A | Interface B |
+|----------|--------------|-------------|----------|----------|-------------|-------------|
+| 2s       | 10.1.1.0/30  |             | leaf1    | leaf2    | swp1        | swp1        |
+| 2s       | 10.1.1.4/30  |             | leaf1    | leaf2    | swp2        | swp2        |
+| 2s       | 10.1.1.8/30  |             | leaf1    | leaf2    | swp3        | swp3        |
+| 2s       | 10.1.1.12/30 |             | leaf1    | leaf2    | swp4        | swp4        |
+| 2lt22s   | 10.1.1.0/30  |             | leaf1    | spine1   | swp1s0      | swp49       |
+| 2lt22s   | 10.1.1.4/30  |             | leaf1    | spine1   | swp1s1      | swp50       |
+| 2lt22s   | 10.1.1.8/30  |             | leaf2    | spine2   | swp1s0      | swp49       |
+| 2lt22s   | 10.1.1.12/30 |             | leaf2    | spine2   | swp1s1      | swp50       |
+| 2lt22s   | 10.1.1.16/30 |             | leaf1    | spine2   | swp1s2      | swp51       |
+| 2lt22s   | 10.1.1.20/30 |             | leaf1    | spine2   | swp1s3      | swp52       |
+| 2lt22s   | 10.1.1.24/30 |             | leaf2    | spine1   | swp1s2      | swp51       |
+| 2lt22s   | 10.1.1.28/30 |             | leaf2    | spine1   | swp1s3      | swp52       |
+| 2lt22s   | 10.1.1.32/30 |             | leaf1    | leaf2    | swp17       | swp17       |
+| 2lt22s   | 10.1.1.36/30 |             | leaf2    | leaf2    | swp17       | swp18       |
+| 2lt22s   | 10.1.1.40/30 |             | spine1   | spine1   | swp17       | swp17       |
+| 2lt22s   | 10.1.1.44/30 |             | spine2   | spine22  | swp17       | swp18       |
+| 2lt22s   | 10.1.1.48/30 |             | leaf1    | server1  | swp32s0     | eth3        |
+| 2lt22s   | 10.1.1.52/30 |             | leaf1    | server2  | swp32s1     | eth2        |
+| 2lt22s   | 10.1.1.56/30 |             | leaf2    | server2  | swp32s0     | eth3        |
+| 2lt22s   | 10.1.1.60/30 |             | leaf2    | server1  | swp32s1     | eth2        |
+
 
 ## Overlays
 
