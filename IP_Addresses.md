@@ -139,9 +139,9 @@ DHCP Pool - 192.168.0.100 - 192.168.0.200
 | 2lt22s   | 10.1.1.24/30 |             | leaf2    | spine1   | swp1s2      | swp51       |
 | 2lt22s   | 10.1.1.28/30 |             | leaf2    | spine1   | swp1s3      | swp52       |
 | 2lt22s   | 10.1.1.32/30 |             | leaf1    | leaf2    | swp17       | swp17       |
-| 2lt22s   | 10.1.1.36/30 |             | leaf2    | leaf2    | swp17       | swp18       |
+| 2lt22s   | 10.1.1.36/30 |             | leaf2    | leaf2    | swp18       | swp18       |
 | 2lt22s   | 10.1.1.40/30 |             | spine1   | spine1   | swp17       | swp17       |
-| 2lt22s   | 10.1.1.44/30 |             | spine2   | spine22  | swp17       | swp18       |
+| 2lt22s   | 10.1.1.44/30 |             | spine2   | spine22  | swp18       | swp18       |
 | 2lt22s   | 10.1.1.48/30 |             | leaf1    | server1  | swp32s0     | eth3        |
 | 2lt22s   | 10.1.1.52/30 |             | leaf1    | server2  | swp32s1     | eth2        |
 | 2lt22s   | 10.1.1.56/30 |             | leaf2    | server2  | swp32s0     | eth3        |
