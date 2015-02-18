@@ -5,6 +5,6 @@ Priority: optional
 Architecture: all
 Essential: no
 Depends: cldemo-wbench-base, openjdk-6-jre-headless, libapache2-mod-proxy-html
-Maintainer: Neil McKee [neil.mckee@inmon.com]
+Maintainer: Customer Engineering <ce-ceng@cumulusnetworks.com>
 Description: base files for demonstration of sFlow(R) monitoring agent
 Homepage: host-sflow.sourceforge.net
